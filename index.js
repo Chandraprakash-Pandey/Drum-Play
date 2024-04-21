@@ -3,13 +3,14 @@ document.querySelectorAll("button")[i].addEventListener("click", function (){
     // console.log(this);
     var buttoninnerhtml = this.innerHTML;
     makesound(buttoninnerhtml);
-
+    buttonAnimation(buttoninnerhtml);
 });
 }
 
 document.addEventListener("keypress", function(event){
     var char_click = event.key;
     makesound(char_click);
+    buttonAnimation(char_click);
 });
 
 function makesound(char_click){
@@ -49,4 +50,13 @@ function makesound(char_click){
             audio.play();
             break;
     }
+};
+
+function buttonAnimation (currentkey){
+    var activeButton = document.querySelector("."+currentkey);
+    activeButton.classList.add("pressed");
+    setTimeout(function(){
+        activeButton.classList.remove("pressed");
+    }, 100);
 }
+
